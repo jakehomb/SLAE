@@ -13,14 +13,14 @@ _start:
 	; creation. Values in the stack need to be a word
 	; of 0's for the TCP, a value of 01 for SOCK_STREAM
 	; and a value of 02 for AF_INET in that order.
-	xor    eax, eax         ; Clear out the EAX
-	push   eax              ; Move the Zeroed out EAX onto the Stack
-	inc    eax              ; Increment the EAX to get the SOCK_Stream Value
-	push   eax              ; Push the Socketcall value onto the the Stack
-	pop    ebx							; Get the Socketcall value for Socket in the EAX
-	push   eax							; Push the SOCK_STREAM identifier onto the stack
-	inc    eax              ; Increment the EAX value to 2, for AF_INET
-	push   eax							; Push the AF_INET value onto the stack
+	xor eax, eax					; Clear out the EAX
+	push eax							; Move the Zeroed out EAX onto the Stack
+	inc eax							; Increment the EAX to get the SOCK_Stream Value
+	push eax							; Push the Socketcall value onto the the Stack
+	pop ebx							; Get the Socketcall value for Socket in the EAX
+	push eax							; Push the SOCK_STREAM identifier onto the stack
+	inc eax							; Increment the EAX value to 2, for AF_INET
+	push eax							; Push the AF_INET value onto the stack
 
 	; Run the syscall
 	mov al, 0x66						; Set the EAX for the Syscall SocketCall
